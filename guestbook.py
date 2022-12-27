@@ -2,8 +2,9 @@ from __future__ import print_function
 
 # from PyQt5.Qt import QApplication, QUrl, QDesktopServices
 from functools import partial
-from gb_ui import *
-from gb_ui_dlgcreator import *
+from ui_main import *
+from ui_abCreator import *
+from ui_rpt import *
 
 import webbrowser
 import MySQLdb
@@ -50,10 +51,26 @@ def insertDataGb(self):
     self.emailLineEdit.clear()
 
     # Example of how to fetch table data:
-    conn.query("""SELECT * FROM gb""")
-    result = conn.store_result()
-    for i in range(result.num_rows()):
-        print(result.fetch_row())
+    # conn.query("SELECT * FROM gb")
+    # result = conn.store_result()
+    # for i in range(result.num_rows()):
+    #     print(result.fetch_row())
+
+def tampilkanDariDB(self):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM gb")
+    allSQLRows = cur.fetchall()
+    self.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
+    self.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+
+    row = 0
+    while True:
+        sqlRow = cur.fetchone()
+        if sqlRow == None:
+            break ##stops while loop if there is no more lines in sql table
+        for col in range(0, 5): ##otherwise add row into tableWidget
+            self.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
+        row += 1
 
 
 class MyDialog(QtWidgets.QDialog):
@@ -61,6 +78,54 @@ class MyDialog(QtWidgets.QDialog):
         super(MyDialog, self).__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+
+class MyReport(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super(MyReport, self).__init__(parent)
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+        self.show()
+        # decfale signal disini jika
+        # self.ui.exit.clicked.connect(self.handle)
+
+    def tampilhasil(self):
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM gb")
+        allSQLRows = cur.fetchall()
+        print(allSQLRows)
+        self.ui.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
+        self.ui.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+
+        row = 0
+        while True:
+            sqlRow = cur.fetchone()
+            if sqlRow == None:
+                break ##stops while loop if there is no more lines in sql table
+            for col in range(0, 5): ##otherwise add row into tableWidget
+                self.ui.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
+            row += 1
+
+def showReportView(self):
+    self.rptForm = MyReport()
+    # self.rptForm.show()
+    # tampilkanDariDB(self)
+
+    self.rptForm.tampilhasil()
+
+    # cur = conn.cursor()
+    # cur.execute("SELECT * FROM gb")
+    # allSQLRows = cur.fetchall()
+    # Ui_Form.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
+    # Ui_Form.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+
+    # row = 0
+    # while True:
+    #     sqlRow = cur.fetchone()
+    #     if sqlRow == None:
+    #         break ##stops while loop if there is no more lines in sql table
+    #     for col in range(0, 5): ##otherwise add row into tableWidget
+    #         self.rptForm.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
+    #     row += 1
 
 def showCreator(self):
     self.dialogCreator = MyDialog()
@@ -74,6 +139,7 @@ def openBrowser(self):
 
 def signals(self):    
     self.actionCreator.triggered.connect(self.showCreator)
+    self.actionView.triggered.connect(self.showReportView)
     self.actionGit.triggered.connect(partial(self.openBrowser))
 
     self.btnSubmit.clicked.connect(partial(self.insertDataGb))
@@ -100,6 +166,9 @@ Ui_MainWindow.showCreator = showCreator
 Ui_MainWindow.openBrowser = openBrowser
 Ui_MainWindow.setDateSkrg = setDateSkrg
 Ui_MainWindow.insertDataGb = insertDataGb
+Ui_MainWindow.tampilkanDariDB = tampilkanDariDB
+Ui_MainWindow.showReportView = showReportView
+
 
 if __name__ == "__main__":
     import sys

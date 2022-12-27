@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_qt_gb.ui'
+# Form implementation generated from reading ui file 'qt_main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -63,6 +63,8 @@ class Ui_MainWindow(object):
         self.menuFile.setObjectName("menuFile")
         self.menuAbout = QtWidgets.QMenu(self.menubar)
         self.menuAbout.setObjectName("menuAbout")
+        self.menuReport = QtWidgets.QMenu(self.menubar)
+        self.menuReport.setObjectName("menuReport")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -73,11 +75,15 @@ class Ui_MainWindow(object):
         self.actionGit.setObjectName("actionGit")
         self.action_Exit = QtWidgets.QAction(MainWindow)
         self.action_Exit.setObjectName("action_Exit")
+        self.actionView = QtWidgets.QAction(MainWindow)
+        self.actionView.setObjectName("actionView")
         self.menuFile.addAction(self.action_Exit)
         self.menuAbout.addAction(self.actionCreator)
         self.menuAbout.addAction(self.actionGit)
+        self.menuReport.addAction(self.actionView)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuAbout.menuAction())
+        self.menubar.addAction(self.menuReport.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -93,6 +99,8 @@ class Ui_MainWindow(object):
         self.btnClear.setText(_translate("MainWindow", "Clear"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
+        self.menuReport.setTitle(_translate("MainWindow", "Report"))
         self.actionCreator.setText(_translate("MainWindow", "Creator"))
         self.actionGit.setText(_translate("MainWindow", "Git"))
         self.action_Exit.setText(_translate("MainWindow", " &Exit"))
+        self.actionView.setText(_translate("MainWindow", "View"))

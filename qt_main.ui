@@ -121,8 +121,15 @@
     <addaction name="actionCreator"/>
     <addaction name="actionGit"/>
    </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <addaction name="actionView"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAbout"/>
+   <addaction name="menuReport"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCreator">
@@ -138,6 +145,11 @@
   <action name="action_Exit">
    <property name="text">
     <string> &amp;Exit</string>
+   </property>
+  </action>
+  <action name="actionView">
+   <property name="text">
+    <string>View</string>
    </property>
   </action>
  </widget>

@@ -29,5 +29,10 @@ dari Bu Astri
 '''
 
 Note :
+Convert
+> pyuic5 qt_main.ui -o ui_main.py
+> pyuic5 qt_dlgCreator.ui -o ui_abCreator.py
+> pyuic5 qt_rpt.ui -o ui_rpt.py
+
 Utk sqlquery to table
 https://stackoverflow.com/questions/22941184/how-to-display-data-from-mysql-database-in-table-using-pyqt

@@ -7,16 +7,16 @@ dari Bu Astri
 
 #### Required and Value Point
 '''
-1. Fungsi Looping (for/while)       10
-    - 
-2. Fungsi if else                   10
-    - 
+1. Fungsi Looping (for/while) (10)
+    - shha
+2. Fungsi if else (10)
+    - hdhd
 3. Class (15)
-    - 
+    - hdhs
 4. Layout (15)
-    - 
+    - hshs
 5. Signal & Slot (10)
-    - 
+    - shhs
 6. Kontrol Aksi (10)
     - Aksi dari button dll
 

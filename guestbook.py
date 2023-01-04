@@ -92,18 +92,20 @@ class MyReport(QtWidgets.QWidget):
         cur = conn.cursor()
         cur.execute("SELECT * FROM gb")
         allSQLRows = cur.fetchall()
-        print(allSQLRows)
-        self.ui.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
-        self.ui.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+        # print(allSQLRows)
+        # self.ui.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
+        # self.ui.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+        
+        self.ui.tableWidget.setColumnCount(6)
+        self.ui.tableWidget.setHorizontalHeaderLabels(['ID', 'TGL', 'NAMA', 'EMAIL', 'HP', 'STATUS'])
+        self.ui.tableWidget.setRowCount(0)
 
-        row = 0
-        while True:
-            sqlRow = cur.fetchone()
-            if sqlRow == None:
-                break ##stops while loop if there is no more lines in sql table
-            for col in range(0, 5): ##otherwise add row into tableWidget
-                self.ui.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
-            row += 1
+        for row_number, row_data in enumerate(allSQLRows):
+            self.ui.tableWidget.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                print(str(data))
+                self.ui.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
 def showReportView(self):
     self.rptForm = MyReport()

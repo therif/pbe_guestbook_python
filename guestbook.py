@@ -104,8 +104,19 @@ class MyReport(QtWidgets.QWidget):
             self.ui.tableWidget.insertRow(row_number)
 
             for column_number, data in enumerate(row_data):
-                print(str(data))
-                self.ui.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+                if (column_number == 5):
+                    # pilihane dropdown kudu kok toto nang kene
+                    # pilihane hadir = 1, nggak = 0
+                    #  di uine totonen, karo set en
+                    sstatus = ''
+                    if (data == 0):
+                        sstatus = 'Skip'
+                    else:
+                        sstatus = 'Hadir'
+                    self.ui.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(sstatus)))
+
+                else :
+                    self.ui.tableWidget.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
 def showReportView(self):
     self.rptForm = MyReport()

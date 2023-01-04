@@ -8,15 +8,15 @@ dari Bu Astri
 #### Required and Value Point
 '''
 1. Fungsi Looping (for/while) (10)
-    - shha
+    - Looping database for in
 2. Fungsi if else (10)
-    - hdhd
+    - untuk melihat hadir tidak
 3. Class (15)
-    - hdhs
+    - class ada 2, myReport dan my dialog
 4. Layout (15)
-    - hshs
+    - blm buat, gawekno di UI
 5. Signal & Slot (10)
-    - shhs
+    - ada
 6. Kontrol Aksi (10)
     - Aksi dari button dll
 

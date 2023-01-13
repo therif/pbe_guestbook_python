@@ -36,3 +36,5 @@ Convert
 
 Utk sqlquery to table
 https://stackoverflow.com/questions/22941184/how-to-display-data-from-mysql-database-in-table-using-pyqt
+
+Ayo beneri neh seng kurang

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>439</width>
-    <height>274</height>
+    <height>331</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>180</y>
+      <y>220</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -30,13 +30,23 @@
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>40</y>
+      <x>50</x>
+      <y>30</y>
       <width>311</width>
-      <height>131</height>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="tanggalLabel">
+       <property name="text">
+        <string>Tanggal</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QDateTimeEdit" name="tanggalDateTimeEdit"/>
+     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="namaLabel">
        <property name="text">
@@ -58,24 +68,41 @@
       <widget class="QLineEdit" name="noHPLineEdit"/>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="emailLabel">
+      <widget class="QLabel" name="genderLabel">
+       <property name="text">
+        <string>Gender</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QRadioButton" name="rb_lakiLaki">
+       <property name="text">
+        <string>Laki laki</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QRadioButton" name="rb_perempuan">
+       <property name="text">
+        <string>Perempuan</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="emailLabel_2">
        <property name="text">
         <string>Email</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="5" column="1">
       <widget class="QLineEdit" name="emailLineEdit"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QDateTimeEdit" name="tanggalDateTimeEdit"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="tanggalLabel">
-       <property name="text">
-        <string>Tanggal</string>
-       </property>
-      </widget>
      </item>
     </layout>
    </widget>
@@ -83,13 +110,29 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>180</y>
+      <y>220</y>
       <width>113</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
      <string>Clear</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="notif">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>190</y>
+      <width>311</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -99,7 +142,7 @@
      <x>0</x>
      <y>0</y>
      <width>439</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="defaultUp">

@@ -6,12 +6,15 @@ from ui_main import *
 from ui_abCreator import *
 from ui_rpt import *
 
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+
 import webbrowser
 import MySQLdb
 
 host = 'localhost'
-user = 'room'
-password = 'therif'
+user = 'cpnk'
+password = ''
 port = 3306
 db = 'pbe_kel4'
 
@@ -34,18 +37,30 @@ conn = MySQLdb.Connection(
 
 
 def insertDataGb(self):
+    gender = "L"
+    if self.rb_lakiLaki.isChecked():
+        gender = "L"
+    elif self.rb_perempuan.isChecked():
+        gender = "P"
+
     nama = self.namaLineEdit.text().strip()
     nohp = self.noHPLineEdit.text().strip()
     email = self.emailLineEdit.text().strip()
     hasil = conn.query(f"""INSERT INTO gb 
-        (nama, hp, email, status) 
-        VALUES ('{nama}', '{nohp}', '{email}', 1);""")
+        (nama, hp, email, gender, status) 
+        VALUES ('{nama}', '{nohp}', '{email}', '{gender}', 1);""")
     hasil2 = conn.commit()
-    print(hasil)
-    print(hasil2)
+    # print(hasil)
+    # print(hasil2)
 
     # harusnya ger result jika oke, clear.
     # ini langsung anggep ok pasti masuk datanya
+    # self.notif.setText("Sukses insert data ke database..!!!")
+    msg = QMessageBox()
+    msg.setWindowTitle("Notification")
+    msg.setText("Sukses Insert Data!")
+    msg.exec_()
+
     self.namaLineEdit.clear()
     self.noHPLineEdit.clear()
     self.emailLineEdit.clear()
@@ -61,14 +76,14 @@ def tampilkanDariDB(self):
     cur.execute("SELECT * FROM gb")
     allSQLRows = cur.fetchall()
     self.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
-    self.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
+    self.tableWidget.setColumnCount(6) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
 
     row = 0
     while True:
         sqlRow = cur.fetchone()
         if sqlRow == None:
             break ##stops while loop if there is no more lines in sql table
-        for col in range(0, 5): ##otherwise add row into tableWidget
+        for col in range(0, 6): ##otherwise add row into tableWidget
             self.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
         row += 1
 
@@ -96,15 +111,15 @@ class MyReport(QtWidgets.QWidget):
         # self.ui.tableWidget.setRowCount(len(allSQLRows)) ##set number of rows
         # self.ui.tableWidget.setColumnCount(5) ##this is fixed for myTableWidget, ensure that both of your tables, sql and qtablewidged have the same number of columns
         
-        self.ui.tableWidget.setColumnCount(6)
-        self.ui.tableWidget.setHorizontalHeaderLabels(['ID', 'TGL', 'NAMA', 'EMAIL', 'HP', 'STATUS'])
+        self.ui.tableWidget.setColumnCount(7)
+        self.ui.tableWidget.setHorizontalHeaderLabels(['ID', 'TGL', 'NAMA', 'HP', 'EMAIL', 'GENDER', 'STATUS'])
         self.ui.tableWidget.setRowCount(0)
 
         for row_number, row_data in enumerate(allSQLRows):
             self.ui.tableWidget.insertRow(row_number)
 
             for column_number, data in enumerate(row_data):
-                if (column_number == 5):
+                if (column_number == 6):
                     # pilihane dropdown kudu kok toto nang kene
                     # pilihane hadir = 1, nggak = 0
                     #  di uine totonen, karo set en

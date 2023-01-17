@@ -27,8 +27,11 @@ Convert
 ## [PROPOSAL](resource/UAS_Proposal_Aplikasi_BukuTamu.pdf)  
 [Download the detail here](resource/UAS_Proposal_Aplikasi_BukuTamu.pdf)
 
+ 
+<p align="center">
+  <img src="resource/ss1.png">
+</p>
 
-[ss 1](resource/ss1.png)  
-
-
-[ss 1](resource/ss2.png)  
+<p align="center">
+  <img src="resource/ss2.png">
+</p>

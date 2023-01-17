@@ -6,7 +6,7 @@ dari Bu Astri
 > M. Syaifudin Tamami - 1002220039  
 
 #### Required and Value Point
-'''
+```
 1. Fungsi Looping (for/while) (10)  
 2. Fungsi if else (10)  
 3. Class (15)  
@@ -16,7 +16,7 @@ dari Bu Astri
 7. Kontrol Pemilihan (10)  
 8. Form Turunan (10)  
 9. Basis Data (10)  
-'''
+```
 
 Note :  
 Convert  

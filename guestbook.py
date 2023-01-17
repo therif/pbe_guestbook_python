@@ -82,8 +82,8 @@ def tampilkanDariDB(self):
     while True:
         sqlRow = cur.fetchone()
         if sqlRow == None:
-            break ##stops while loop if there is no more lines in sql table
-        for col in range(0, 6): ##otherwise add row into tableWidget
+            break ##stop jika tidak ada line baru
+        for col in range(0, 6): ##add row ke table widget
             self.tableWidget.setItem(row, col, QtGui.QTableWidgetItem(sqlRow[col]))
         row += 1
 

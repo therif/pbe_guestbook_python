@@ -6,22 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>644</width>
-    <height>490</height>
+    <width>650</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>571</width>
-     <height>391</height>
+     <width>631</width>
+     <height>471</height>
     </rect>
    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
+    </property>
+    <item>
+     <widget class="QTableWidget" name="tableWidget"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

@@ -24,4 +24,6 @@ Convert
 > pyuic5 ui/qt_dlgCreator.ui -o ui_abCreator.py  
 > pyuic5 ui/qt_rpt.ui -o ui_rpt.py  
 
-## [PROPOSAL](resource/UAS_Proposal_Aplikasi_BukuTamu.pdf)
+## [PROPOSAL](resource/UAS_Proposal_Aplikasi_BukuTamu.pdf)  
+[Download the detail here](resource/UAS_Proposal_Aplikasi_BukuTamu.pdf)
+
